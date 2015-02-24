@@ -37,24 +37,6 @@ public class MyArrayList {
         }
         mMyArray[++tail] = i;
         numElements++;
-//        float fSize, fNumber;
-//        fSize = (float) size;
-//        fNumber = (float) numElements;
-//        if (size >= 40 && (fNumber / fSize) < 0.3) {
-//            System.out.println("In pushBack");
-//            int tempSize = size / 2; // 50% of array
-//            Comparable[] tempArr = new Comparable[tempSize];
-//            size = tempSize;
-//            int tempHeadO = getHead();
-//            head = size / 4;
-//            int tempHeadN = head;
-//            for (int x = 0; x < numElements; x++) {
-//                tempArr[tempHeadN++] = mMyArray[tempHeadO++];
-//            }
-//            mMyArray = tempArr;
-//            tail = --head + numElements;
-//            tempArr = null;
-//        }
     }
 
     public Comparable popBack() {
@@ -100,26 +82,6 @@ public class MyArrayList {
         mMyArray[head] = i;
         head--;
         numElements++;
-//        float fSize, fNumber;
-//        fSize = (float) size;
-//        fNumber = (float) numElements;              // if elements/size (percentage of space taken) is less 0.3
-//        // ; do reallocation to
-//        // (size * 1.5) / 2
-//        if (size >= 50 && (fNumber / fSize) < 0.3) {
-//            int tempSize = (int) (size * 1.5) / 2; // 75% of array
-//            System.out.println(tempSize);
-//            Comparable[] tempArr = new Comparable[tempSize];
-//            size = tempSize;
-//            int tempHeadO = getHead();
-//            head = size / 4;
-//            int tempHeadN = head;
-//            for (int x = 0; x < numElements; x++) {
-//                tempArr[tempHeadN++] = mMyArray[tempHeadO++];
-//            }
-//            mMyArray = tempArr;
-//            tail = --head + numElements;
-//            tempArr = null;
-//        }
     }
 
     protected Comparable popFront() {
