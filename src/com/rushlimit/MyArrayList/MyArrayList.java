@@ -198,6 +198,25 @@ public class MyArrayList {
         return 0;
     }
 
+    protected Comparable remove(int i) {
+        if (i < 0 || i >= numElements || size == 0)
+            return null;
+        Comparable tempC = peek(i);
+        if(i == 0) {
+            popFront();
+            return tempC;
+        }
+        if(i == numElements - 1) {
+            popBack();
+            return tempC;
+        }
+        for(int x = i + 1; x < getTail(); x++) {
+            mMyArray[x - 1 + getHead()] = mMyArray[x + getHead()];
+        }
+        popBack();
+        return tempC;
+    }
+
     public Comparable[] getmMyArray() {
         return mMyArray;
     }
