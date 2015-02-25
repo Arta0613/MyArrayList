@@ -1,10 +1,14 @@
 package com.rushlimit.MyArrayList;
-/*
+
+import java.util.Arrays;
+import java.util.Collections;
+
+/**
     A simple Array based ArrayList with Constant time insert/removal from front and back.
     Internal Array structure is type Comparable
     At push/pop-Back and push/pop-Front - array is re-sized based on size and space consumed.
 
-    Created By: Mohammed Amin
+    Implemented by: Mohammed Amin
  */
 public class MyArrayList {
 
@@ -215,6 +219,55 @@ public class MyArrayList {
         }
         popBack();
         return tempC;
+    }
+
+    private boolean remove(Comparable c) {
+        if(numElements == 0)
+            return false;
+        if (numElements <= 20) {
+            int index = -1;
+            for(int i = getHead(); i <= tail; i++) {
+                if(mMyArray[i].compareTo(c) == 0) {
+                    index = i;
+                    break;
+                }
+            }
+            if(index !=  -1) {
+                if (index == getHead()) {
+                    popFront();
+                    return true;
+                } else if (index == tail) {
+                    popBack();
+                    return true;
+                }
+                for(int x = index + 1; x <= getTail(); x++) {
+                    mMyArray[x - 1] = mMyArray[x];
+                }
+                popBack();
+                return true;
+            } else {
+                return false;
+            }
+        }
+        Comparable [] tempArr = mMyArray;
+        Collections.sort(Arrays.asList(tempArr));
+        int index = Arrays.binarySearch(tempArr, c);
+        if(index < 0)
+            return false;
+        if(index == 0) {
+            popFront();
+            return true;
+        }
+        if(index == tail) {
+            popBack();
+            return true;
+        }
+        for(int x = index + 1 + getHead(); x <= getTail(); x++) {
+            mMyArray[x - 1] = mMyArray[x];
+        }
+        popBack();
+        tempArr = null;
+        return true;
     }
 
     public Comparable[] getmMyArray() {
